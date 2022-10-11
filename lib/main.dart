@@ -1,4 +1,5 @@
-import 'package:dcit24/presentation/screen/home_screen.dart';
+import 'package:dcit24/core/theme/theme_data.dart';
+import 'package:dcit24/presentation/screen/main_screen.dart';
 import 'package:dcit24/presentation/state_management/prulife/prulife_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -23,16 +24,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.blueGrey.shade900,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-      ),
+      theme: AppTheme.theme(),
       home: BlocProvider<PrulifeCubit>(
         create: (context) => sl<PrulifeCubit>()..fetchPrulife(),
-        child: const HomeScreen(),
+        child: const MainScreen(),
       ),
     );
   }
